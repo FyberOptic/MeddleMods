@@ -1,0 +1,94 @@
+
+subprojects {
+	apply plugin: 'java'  
+	
+	dependencies {
+		compile fileTree('../libs/')
+		compile rootProject.project(':DynamicMappings')
+	}
+	
+    sourceCompatibility = '1.7'
+    targetCompatibility = '1.7'
+	
+	buildDir = file('../builds/' + project.name)	
+	
+	sourceSets {
+		main {
+			java {
+				srcDirs = ['../src']
+				include 'net/fybertech/' + project.name + '/**'
+			}
+		}
+	}
+	
+	gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:-options"
+        }
+    }
+}
+
+project(':MeddleMods:firespread') {
+	
+	version = 'dynamic-1.2.1'
+
+	jar {
+		manifest {
+			attributes('TweakClass' : 'net.fybertech.firespread.FireTweaker')
+		}        
+	}
+}
+
+
+project(':MeddleMods:alltheitems') {
+	
+	version = 'dynamic-1.2.1'
+	
+	jar {
+		manifest {
+			attributes('TweakClass' : 'net.fybertech.alltheitems.AllTheItems')
+		}        
+	}
+	
+}
+
+
+project(':MeddleMods:leafdecay') {
+	
+	version = 'dynamic-1.2.1'
+	
+	jar {
+		manifest {
+			attributes('TweakClass' : 'net.fybertech.leafdecay.LeafDecay')
+		}        
+	}
+	
+}
+
+
+project(':MeddleMods:physicsfix') {
+	
+	version = 'dynamic-1.2.1'
+	
+	jar {
+		manifest {
+			attributes('TweakClass' : 'net.fybertech.physicsfix.PhysicsTweaker')
+		}        
+	}
+	
+}
+
+
+project(':MeddleMods:babybuster') {
+	
+	version = 'dynamic-1.2.1'
+	
+	jar {
+		manifest {
+			attributes('TweakClass' : 'net.fybertech.babybuster.ZombieTweak')
+		}
+	}
+	
+}
+
+
